@@ -87,6 +87,17 @@ collection and Git history, [At0mFlow](https://at0mflow.com/) adds organised
 script knowledge, automatic documentation and SOPs, cleanup and migration
 workflows, ownership tracking and automation-estate monitoring.
 
+## Other public At0mFlow tools
+
+- [At0mFlow PSAnalyzer](https://github.com/At0mFlow/At0mFlow-PSAnalyzer) turns
+  PSScriptAnalyzer findings into readable console, object, JSON and CSV output.
+- [At0mFlow Script Audit](https://github.com/At0mFlow/At0mFlow-ScriptAudit)
+  collects custom PowerShell scripts and scheduled-task context into one
+  reviewable folder tree.
+- [At0mFlow Uptime Monitor](https://github.com/At0mFlow/At0mFlow-UptimeMonitor)
+  checks HTTP and HTTPS endpoints from PowerShell with readable console,
+  object, JSON and CSV output.
+
 ## Documentation
 
 - [Installation](docs/installation.md)
