@@ -1,0 +1,11 @@
+{
+  "Status": "Pushed",
+  "RepositoryPath": "D:\\PrivateGit\\Operations",
+  "IncludedPaths": ["scripts", "manifests"],
+  "ChangeCount": 2,
+  "ChangedFiles": ["M\tscripts/SERVER-EXAMPLE-01/C/Scripts/Report.ps1", "M\tmanifests/script-inventory.csv"],
+  "Commit": "0123456789abcdef0123456789abcdef01234567",
+  "Branch": "main",
+  "Upstream": "origin/main",
+  "Pushed": true
+}

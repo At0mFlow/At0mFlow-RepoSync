@@ -1,0 +1,8 @@
+# Local execution output and editor files.
+*.log
+*.tmp
+repo-sync-output/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
