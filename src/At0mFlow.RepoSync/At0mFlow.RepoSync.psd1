@@ -1,6 +1,6 @@
 @{
     RootModule        = 'At0mFlow.RepoSync.psm1'
-    ModuleVersion     = '1.0.0'
+    ModuleVersion     = '1.0.1'
     GUID              = '0ad58bf3-85f3-40b8-9fcc-5cc6d4678a70'
     Author            = 'At0mFlow'
     CompanyName       = 'At0mFlow'

@@ -128,11 +128,18 @@ function Get-At0mFlowRepoSyncContext {
         throw "RepositoryPath does not exist or is not a directory: $RepositoryPath"
     }
     $resolvedRepositoryPath = [IO.Path]::GetFullPath($RepositoryPath).TrimEnd('\', '/')
+    $repositoryItem = Get-Item -LiteralPath $resolvedRepositoryPath -Force -ErrorAction Stop
+    if ($repositoryItem.Attributes -band [IO.FileAttributes]::ReparsePoint) {
+        throw "RepositoryPath cannot be a reparse point: $RepositoryPath"
+    }
     $rootResult = Invoke-At0mFlowRepoGitCommand `
         -WorkingDirectory $resolvedRepositoryPath `
         -ArgumentList @('rev-parse', '--show-toplevel')
     $gitRoot = [IO.Path]::GetFullPath($rootResult.Output).TrimEnd('\', '/')
-    if ($resolvedRepositoryPath -ne $gitRoot) {
+    $prefixResult = Invoke-At0mFlowRepoGitCommand `
+        -WorkingDirectory $resolvedRepositoryPath `
+        -ArgumentList @('rev-parse', '--show-prefix')
+    if (-not [string]::IsNullOrWhiteSpace($prefixResult.Output)) {
         throw "RepositoryPath must be the Git working-tree root: $gitRoot"
     }
 

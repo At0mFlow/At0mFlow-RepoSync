@@ -23,5 +23,37 @@ Example scheduled command:
 powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File D:\Tools\At0mFlow-RepoSync\src\Invoke-At0mFlowRepoSync.ps1 -RepositoryPath D:\PrivateGit\Operations -IncludePath scripts,manifests -Push -Quiet
 ```
 
+## Several collector folders
+
+If separate servers produce their own audit bundles, keep each unchanged under
+a distinct repository-relative folder:
+
+```text
+PowerShell-Estate/
+  collectors/
+    SERVER-01/
+      README.txt
+      scripts/
+      manifests/
+    SERVER-02/
+      README.txt
+      scripts/
+      manifests/
+```
+
+Run one RepoSync job from the repository root after the collector folders have
+been refreshed. Preview the complete scope first:
+
+```powershell
+./src/Invoke-At0mFlowRepoSync.ps1 `
+    -RepositoryPath D:\PrivateGit\PowerShell-Estate `
+    -IncludePath collectors `
+    -Preview
+```
+
+Once reviewed, use the same command with `-Push -Quiet`. Do not run concurrent
+RepoSync jobs against one working tree or have several machines push the same
+branch at the same time.
+
 Do not place passwords, tokens or private keys in the task arguments. RepoSync
 does not need them and will not store them.

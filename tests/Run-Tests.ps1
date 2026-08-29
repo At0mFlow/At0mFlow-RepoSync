@@ -72,7 +72,7 @@ $temporaryRoot = Join-Path ([IO.Path]::GetTempPath()) ('At0mFlow-RepoSync-Tests-
 
 try {
     $manifest = Test-ModuleManifest -Path $modulePath
-    Assert-That ($manifest.Version.ToString() -eq '1.0.0') 'The module manifest is valid.'
+    Assert-That ($manifest.Version.ToString() -eq '1.0.1') 'The module manifest is valid.'
 
     Import-Module $modulePath -Force
     Assert-That ($null -ne (Get-Command Invoke-At0mFlowRepoSync -ErrorAction SilentlyContinue)) 'The sync command is exported.'
@@ -117,6 +117,13 @@ try {
         -IncludePath @('approved/scripts', 'approved/manifests') `
         -Preview
     Assert-That ($preview.Status -eq 'Preview') 'Preview mode reports its status.'
+    $canonicalWorkingPath = (Invoke-TestGit `
+        -WorkingDirectory $workingPath `
+        -ArgumentList @('rev-parse', '--show-toplevel') |
+            Select-Object -First 1).Trim()
+    Assert-That `
+        ($preview.RepositoryPath -eq [IO.Path]::GetFullPath($canonicalWorkingPath).TrimEnd('\', '/')) `
+        'Equivalent Windows short and long root paths are accepted.'
     Assert-That ($preview.ChangeCount -eq 2) 'Preview reports changes only in the approved paths.'
     Assert-That ($preview.Pushed -eq $false) 'Preview never pushes.'
     $afterPreviewCommit = (Invoke-TestGit -WorkingDirectory $workingPath -ArgumentList @('rev-parse', 'HEAD') | Select-Object -First 1).Trim()
