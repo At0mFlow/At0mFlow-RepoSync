@@ -64,6 +64,11 @@ Push to the already configured upstream:
 - `git commit --only` keeps unrelated staged work out of the RepoSync commit.
 - Push requires an existing upstream and is never implied by a commit.
 
+## Console branding
+
+Interactive runs open with the full [Orbit console mascot](src/At0mFlow.RepoSync/Orbit.Console.txt)
+above the At0mFlow wordmark. JSON and quiet runs stay machine-readable.
+
 ## Hourly scheduling
 
 Run the preview and first push interactively under the same identity that will

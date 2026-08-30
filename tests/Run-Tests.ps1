@@ -72,7 +72,7 @@ $temporaryRoot = Join-Path ([IO.Path]::GetTempPath()) ('At0mFlow-RepoSync-Tests-
 
 try {
     $manifest = Test-ModuleManifest -Path $modulePath
-    Assert-That ($manifest.Version.ToString() -eq '1.0.1') 'The module manifest is valid.'
+    Assert-That ($manifest.Version.ToString() -eq '1.0.2') 'The module manifest is valid.'
 
     Import-Module $modulePath -Force
     Assert-That ($null -ne (Get-Command Invoke-At0mFlowRepoSync -ErrorAction SilentlyContinue)) 'The sync command is exported.'
@@ -226,6 +226,7 @@ try {
     $block = [string] [char] 0x2588
     $logoFragment = '       ' + (($block * 5) -join '') + [char] 0x2557
     Assert-That ($LASTEXITCODE -eq 0) 'The console entry point exits successfully.'
+    Assert-That $consoleText.Contains(('@' * 26)) 'Interactive output renders the Orbit mascot.'
     Assert-That $consoleText.Contains($logoFragment) 'Interactive output renders the At0mFlow block wordmark.'
     Assert-That ($consoleText -match 'At0mFlow RepoSync') 'Interactive output identifies RepoSync.'
 
