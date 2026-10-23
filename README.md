@@ -69,7 +69,7 @@ Push to the already configured upstream:
 Interactive runs open with Orbit above the At0mFlow wordmark. JSON and quiet
 runs stay machine-readable.
 
-+```text
+```text
 ==================================================================================================
 
                                                   @@@@@@
@@ -153,6 +153,9 @@ copy a PowerShell estate into a stable `scripts/` tree and write local
 provenance and Task Scheduler evidence under `manifests/`. Point RepoSync at
 those two folders after the collection has been reviewed and approved for a
 private repository.
+
+For the full collection and Git hand-off walkthrough, see
+[At0mFlow’s hourly PowerShell estate guide](https://at0mflow.com/docs/hourly-powershell-estate-tracking).
 
 Both tools remain useful without At0mFlow. If the estate grows beyond file
 collection and Git history, [At0mFlow](https://at0mflow.com/) adds organised
